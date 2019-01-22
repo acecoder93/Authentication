@@ -13,7 +13,7 @@ var crypto = require('crypto');
 var salt = crypto.randomBytes(20).toString('hex');
 console.log(salt);
 
-
+// This is the password the user created when the account was developed
 var password = 'some-password';
 
 // Combining
@@ -34,6 +34,7 @@ var stored_pass = `pbkdf2_sha256$36000$${salt}$${hash}`;
 // A split will create an array of items
 var pass_parts = stored_pass.split('$');
 
+// This is the password the user is using to login to their existing account
 var enteredPassword = 'some-password';
 
 var key = pbkdf2.pbkdf2Sync(enteredPassword, pass_parts[2], parseInt(pass_parts[1]), 256, 'sha256');
