@@ -11,7 +11,7 @@ var myStore = new SequelizeSessionStore({
 });
 
 
-app.use(cookieParser();)
+app.use(cookieParser());
 
 app.use(session({ // to use, need to require session
     secret: 'some-special-secret',
