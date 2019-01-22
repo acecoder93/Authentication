@@ -14,7 +14,7 @@ var salt = crypto.randomBytes(20).toString('hex');
 console.log(salt);
 
 
-var password = 'some password';
+var password = 'some-password';
 
 // Combining
 var key = pbkdf2.pbkdf2Sync(password, salt, 36000, 256, 'sha256');
@@ -26,5 +26,24 @@ var hash = key.toString('hex');
 console.log(hash);
 
 
-// Storing password to allow for decryption
-var stored_pass = 'pbkdf2_sha256&36000${salt}${hash}'
+// Storing password to allow for decryption (This is stored in the database)
+var stored_pass = `pbkdf2_sha256$36000$${salt}$${hash}`;
+
+// Checking password
+// Retreiving password from database
+// A split will create an array of items
+var pass_parts = stored_pass.split('$');
+
+var enteredPassword = 'some-password';
+
+var key = pbkdf2.pbkdf2Sync(enteredPassword, pass_parts[2], parseInt(pass_parts[1]), 256, 'sha256');
+
+var hash = key.toString('hex');
+console.log(hash);
+
+// Comparing passwords
+if (hash === pass_parts[3]){
+    console.log ('Passwords Matched!');
+} else {
+    console.log('You suck, try again');
+};
