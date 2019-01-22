@@ -1,0 +1,21 @@
+{
+  "name": "seq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-pg-simple": "^5.0.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "express-sessions": "^1.0.6",
+    "pg": "^7.8.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.42.0",
+    "sequelize-session-store": "^0.1.0"
+  }
+}
